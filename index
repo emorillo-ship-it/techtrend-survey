@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTrend UX Research Survey</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .hidden { display: none; }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .progress-bar { transition: width 0.4s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen pb-20">
+
+    <!-- Header -->
+    <header class="bg-indigo-700 text-white py-8 px-4 mb-8 shadow-md">
+        <div class="max-w-2xl mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold italic tracking-tight">TechTrend</h1>
+                <p class="mt-2 text-indigo-100 opacity-90 text-sm">User Experience Research Phase</p>
+            </div>
+            <!-- Simulation of a separate URL link for the assignment -->
+            <div class="hidden md:block">
+                <span class="bg-indigo-800 text-xs px-3 py-1 rounded-full border border-indigo-400">Live Survey Preview Mode</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-2xl mx-auto px-4">
+        
+        <!-- Progress Indicator -->
+        <div class="mb-8">
+            <div class="flex justify-between text-xs text-slate-500 mb-2 uppercase font-bold tracking-wider">
+                <span>Survey Progress</span>
+                <span id="progress-text">20%</span>
+            </div>
+            <div class="bg-slate-200 rounded-full h-2 overflow-hidden shadow-inner">
+                <div id="progress" class="progress-bar bg-indigo-500 h-full w-20"></div>
+            </div>
+        </div>
+
+        <!-- Section 1: Intro & Screening -->
+        <section id="section-1" class="fade-in bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-xl font-semibold mb-6 border-b pb-2 text-indigo-900">1. Welcome</h2>
+            <p class="mb-6 text-slate-600 leading-relaxed">Thank you for participating! This survey helps us understand your tech shopping habits and identifies how we can improve the <strong>TechTrend</strong> online experience.</p>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block font-medium mb-3 text-slate-700">Have you shopped on TechTrend.com before?</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition group">
+                            <input type="radio" name="shoppedBefore" value="yes" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 font-medium group-hover:text-indigo-900">Yes, I am a returning customer</span>
+                        </label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-indigo-50 hover:border-indigo-300 transition group">
+                            <input type="radio" name="shoppedBefore" value="no" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 font-medium group-hover:text-indigo-900">No, I shop for tech elsewhere</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button onclick="navigate('section-1')" class="mt-8 w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 transform active:scale-[0.98]">Continue to Questions</button>
+        </section>
+
+        <!-- Section 2: Returning Customer Experience (Branch A) -->
+        <section id="section-2" class="hidden fade-in bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-xl font-semibold mb-6 border-b pb-2 text-indigo-900">2. Your Experience</h2>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block font-medium mb-3">How satisfied are you with the TechTrend interface?</label>
+                    <div class="grid grid-cols-5 gap-2 text-center">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="satisfaction" value="1" class="hidden peer">
+                            <div class="p-4 border rounded-xl peer-checked:bg-indigo-600 peer-checked:text-white transition shadow-sm">1</div>
+                            <span class="text-[10px] uppercase font-bold text-slate-400 mt-1 block">Poor</span>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="satisfaction" value="2" class="hidden peer">
+                            <div class="p-4 border rounded-xl peer-checked:bg-indigo-600 peer-checked:text-white transition shadow-sm">2</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="satisfaction" value="3" class="hidden peer">
+                            <div class="p-4 border rounded-xl peer-checked:bg-indigo-600 peer-checked:text-white transition shadow-sm">3</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="satisfaction" value="4" class="hidden peer">
+                            <div class="p-4 border rounded-xl peer-checked:bg-indigo-600 peer-checked:text-white transition shadow-sm">4</div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="satisfaction" value="5" class="hidden peer">
+                            <div class="p-4 border rounded-xl peer-checked:bg-indigo-600 peer-checked:text-white transition shadow-sm">5</div>
+                            <span class="text-[10px] uppercase font-bold text-slate-400 mt-1 block">Great</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-medium mb-3">How do you usually find products on our site?</label>
+                    <select class="w-full p-4 border rounded-xl bg-slate-50 focus:ring-2 focus:ring-indigo-500 outline-none appearance-none cursor-pointer">
+                        <option value="" disabled selected>Choose an option...</option>
+                        <option>Direct Search (Search Bar)</option>
+                        <option>Browsing Categories</option>
+                        <option>Using Advanced Filters</option>
+                        <option>Deals & Promotions Page</option>
+                    </select>
+                </div>
+
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                    <label class="block font-bold text-indigo-900 mb-3">Branching Question: Did you experience any issues at checkout?</label>
+                    <p class="text-xs text-indigo-700 mb-4 font-medium italic">Selecting "Yes" will show an additional page for troubleshooting.</p>
+                    <div class="flex gap-4">
+                        <label class="flex-1 flex items-center p-4 border bg-white rounded-xl cursor-pointer hover:border-indigo-400 transition">
+                            <input type="radio" name="friction" value="yes" class="w-4 h-4 text-indigo-600">
+                            <span class="ml-3 font-medium">Yes, I had trouble</span>
+                        </label>
+                        <label class="flex-1 flex items-center p-4 border bg-white rounded-xl cursor-pointer hover:border-indigo-400 transition">
+                            <input type="radio" name="friction" value="no" class="w-4 h-4 text-indigo-600">
+                            <span class="ml-3 font-medium">No, it was smooth</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex gap-4 mt-8">
+                <button onclick="goBack('section-1')" class="flex-1 bg-slate-200 text-slate-700 font-bold py-4 rounded-xl hover:bg-slate-300 transition">Back</button>
+                <button onclick="navigate('section-2')" class="flex-[2] bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition">Next Page</button>
+            </div>
+        </section>
+
+        <!-- Section 3: Conditional Friction Deep Dive (Only for Yes to Friction) -->
+        <section id="section-friction" class="hidden fade-in bg-white p-8 rounded-xl shadow-lg border-2 border-red-200">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="bg-red-600 text-white text-[10px] px-2 py-1 rounded font-black uppercase">Friction Analysis</span>
+                <h2 class="text-xl font-semibold text-red-900">3. Issue Details</h2>
+            </div>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block font-medium mb-3">Which part of the payment process was difficult?</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center p-3 hover:bg-red-50 rounded-lg cursor-pointer"><input type="checkbox" class="w-5 h-5 mr-3 rounded border-red-300"> Card processing errors</label>
+                        <label class="flex items-center p-3 hover:bg-red-50 rounded-lg cursor-pointer"><input type="checkbox" class="w-5 h-5 mr-3 rounded border-red-300"> Confusing shipping costs</label>
+                        <label class="flex items-center p-3 hover:bg-red-50 rounded-lg cursor-pointer"><input type="checkbox" class="w-5 h-5 mr-3 rounded border-red-300"> Address validation failure</label>
+                        <label class="flex items-center p-3 hover:bg-red-50 rounded-lg cursor-pointer"><input type="checkbox" class="w-5 h-5 mr-3 rounded border-red-300"> Mobile site layout issues</label>
+                    </div>
+                </div>
+                <div>
+                    <label class="block font-medium mb-3">Tell us more so we can fix it:</label>
+                    <textarea class="w-full p-4 border rounded-xl h-32 focus:ring-2 focus:ring-red-500 outline-none" placeholder="What happened exactly?"></textarea>
+                </div>
+            </div>
+            <button onclick="navigate('section-friction')" class="mt-8 w-full bg-red-600 text-white font-bold py-4 rounded-xl hover:bg-red-700 shadow-lg">Submit Feedback & Continue</button>
+        </section>
+
+        <!-- Section 4: Market Research (Branch B - New Users) -->
+        <section id="section-3" class="hidden fade-in bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-xl font-semibold mb-6 border-b pb-2 text-indigo-900">2. Tech Priorities</h2>
+            <p class="mb-4 text-sm text-slate-500 italic">Since you're new to TechTrend, we'd love to know what matters to you.</p>
+            
+            <div class="space-y-6">
+                <div>
+                    <label class="block font-medium mb-3">What is your #1 priority when choosing a tech shop?</label>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-indigo-50"><input type="radio" name="mkt" class="w-4 h-4 mr-3"> Lowest Available Price</label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-indigo-50"><input type="radio" name="mkt" class="w-4 h-4 mr-3"> Quality of Technical Support</label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-indigo-50"><input type="radio" name="mkt" class="w-4 h-4 mr-3"> Product Availability/Stock</label>
+                        <label class="flex items-center p-4 border rounded-xl cursor-pointer hover:bg-indigo-50"><input type="radio" name="mkt" class="w-4 h-4 mr-3"> Speed of Delivery</label>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-4 mt-8">
+                <button onclick="goBack('section-1')" class="flex-1 bg-slate-200 text-slate-700 font-bold py-4 rounded-xl hover:bg-slate-300 transition">Back</button>
+                <button onclick="navigate('section-3')" class="flex-[2] bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition">Next Page</button>
+            </div>
+        </section>
+
+        <!-- Section 5: Final Suggestions -->
+        <section id="section-4" class="hidden fade-in bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+            <h2 class="text-xl font-semibold mb-6 border-b pb-2 text-indigo-900">3. Final Suggestions</h2>
+            <div class="space-y-6">
+                <div>
+                    <label class="block font-medium mb-3">What is one specific feature TechTrend is missing?</label>
+                    <input type="text" class="w-full p-4 border rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="e.g. Build-a-PC tool, Student discount...">
+                </div>
+                <div>
+                    <label class="block font-medium mb-3">Would you be open to a 10-minute user interview (compensated)?</label>
+                    <div class="flex gap-4">
+                        <label class="flex-1 flex items-center p-4 border rounded-xl cursor-pointer"><input type="radio" name="interview" class="w-4 h-4 mr-2"> Yes, contact me</label>
+                        <label class="flex-1 flex items-center p-4 border rounded-xl cursor-pointer"><input type="radio" name="interview" class="w-4 h-4 mr-2"> No thanks</label>
+                    </div>
+                </div>
+            </div>
+            <button onclick="submitSurvey()" class="mt-8 w-full bg-green-600 text-white font-bold py-4 rounded-xl hover:bg-green-700 shadow-xl shadow-green-200 transition transform active:scale-[0.98]">Submit All Responses</button>
+        </section>
+
+        <!-- Thank You -->
+        <section id="thanks" class="hidden text-center fade-in py-20 bg-white p-12 rounded-xl border shadow-lg">
+            <div class="text-7xl mb-6">🚀</div>
+            <h2 class="text-4xl font-bold text-indigo-900 mb-4">You're All Set!</h2>
+            <p class="text-slate-600 max-w-md mx-auto leading-relaxed">Your feedback has been recorded. This completes the <strong>TechTrend Research Survey</strong> homework assignment.</p>
+            <button onclick="location.reload()" class="mt-10 inline-block bg-indigo-100 text-indigo-700 font-bold px-8 py-3 rounded-full hover:bg-indigo-200 transition">Restart Demo</button>
+        </section>
+
+    </main>
+
+    <script>
+        const progress = document.getElementById('progress');
+        const progressText = document.getElementById('progress-text');
+
+        function updateProgress(val, text) {
+            progress.style.width = val + '%';
+            progressText.innerText = text;
+        }
+
+        function navigate(currentId) {
+            // Logic for Section 1 (Branching)
+            if (currentId === 'section-1') {
+                const shopped = document.querySelector('input[name="shoppedBefore"]:checked');
+                if (!shopped) {
+                    alert('Please select whether you have shopped with us before.');
+                    return;
+                }
+                hideAll();
+                if (shopped.value === 'yes') {
+                    show('section-2');
+                    updateProgress(40, '40%');
+                } else {
+                    show('section-3');
+                    updateProgress(60, '60%');
+                }
+            } 
+            
+            // Logic for Section 2 (Conditional Friction)
+            else if (currentId === 'section-2') {
+                const friction = document.querySelector('input[name="friction"]:checked');
+                hideAll();
+                if (friction && friction.value === 'yes') {
+                    show('section-friction');
+                    updateProgress(70, '70%');
+                } else {
+                    show('section-4');
+                    updateProgress(85, '85%');
+                }
+            }
+
+            else if (currentId === 'section-friction' || currentId === 'section-3') {
+                hideAll();
+                show('section-4');
+                updateProgress(85, '85%');
+            }
+        }
+
+        function goBack(targetId) {
+            hideAll();
+            show(targetId);
+            updateProgress(20, '20%');
+        }
+
+        function submitSurvey() {
+            hideAll();
+            show('thanks');
+            updateProgress(100, 'COMPLETED');
+        }
+
+        function hideAll() {
+            document.querySelectorAll('section').forEach(s => s.classList.add('hidden'));
+        }
+
+        function show(id) {
+            document.getElementById(id).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
